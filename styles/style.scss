@@ -1,3 +1,14 @@
+$light-gray: #969696;
+$hover-btn-color: #2b2b2b;
+
+@mixin flex($justify: initial, $align: initial, $wrap: nowrap, $direction: row) {
+    display: flex;
+    justify-content: $justify;
+    align-items: $align;
+    flex-wrap: $wrap;
+    flex-direction: $direction;
+}
+
 html {
 	box-sizing: border-box;
 	font-size: 18px;
@@ -13,7 +24,9 @@ html {
 }
 
 body {
-	font-family: 'Rubik', sans-serif;
+    font-family: 'Rubik', sans-serif;
+    @include flex($direction: column);
+    min-height: 100vh;
 }
 
 .header {
@@ -21,14 +34,10 @@ body {
 	background-size: cover;
 	background-position: top center;
 	background-repeat: no-repeat;
-	min-height: 23vh;
+	min-height: 329px;
 
 	&__inner {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: space-between;
-		min-height: 12vh;
+        @include flex($align: center, $direction: column);
 	}
 
 	&__title {
@@ -37,23 +46,29 @@ body {
 
 	&__form {
 		display: flex;
-		width: 50%;
-		min-width: 300px;
+        width: 600px;
 	}
 
 	&__search {
 		padding: 1rem;
-		flex: 1;
+        flex: 1;
+        border-top-left-radius: 16px;
+        border-bottom-left-radius: 16px;
+        border: 0;
 	}
 
 	&__submit {
 		background-color: #000;
-		width: 60px;
-		border: 0;
-		position: relative;
-		display: flex;
-		align-items: center;
-		justify-content: center;
+        width: 60px;
+        border: 0;
+        @include flex($align: center, $justify: center);
+        cursor: pointer;
+        border-top-right-radius: 16px;
+        border-bottom-right-radius: 16px;
+
+        &:hover {
+            background-color: $hover-btn-color;
+        }
 
 		&::before {
 			content: '';
@@ -64,4 +79,47 @@ body {
 			background-repeat: no-repeat;
 		}
 	}
+}
+
+.main {
+    position: relative;
+    @include flex($direction: column);
+    flex: 1;
+}
+
+.ip-info {
+    align-items: center;
+    background-color: #fff;
+    width: 63%;
+    display: flex;
+    border-radius: 20px;
+    min-height: 166px;
+    padding: 1rem 2rem;
+    position: absolute;
+    top: -86px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+
+    > * {
+        width: 100%;
+        height: 87px;
+
+        p {
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            color: $light-gray;
+        }
+    }
+
+    >:not(:last-child) {
+        padding-right: 4rem;
+        margin-right: 2rem;
+        border-right: 1px solid $light-gray;
+    }
+}
+
+.map {
+    flex: 1;
+    z-index: 0;
 }

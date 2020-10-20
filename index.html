@@ -3,12 +3,6 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link
-			rel="icon"
-			type="image/png"
-			sizes="32x32"
-			href="./images/favicon-32x32.png"
-		/>
 		<title>IP Address Tracker</title>
 		<link
 			href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap"
@@ -19,31 +13,51 @@
 			href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
 			integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w=="
 			crossorigin="anonymous"
-		/>
-		<link rel="stylesheet" href="styles/style.css" />
+        />
+        <link rel="stylesheet" href="./node_modules/leaflet/dist/leaflet.css">
+        <link rel="stylesheet" href="styles/style.css" />
+        <script src="node_modules/leaflet/dist/leaflet.js"></script>
 	</head>
 	<body>
 		<header class="header">
 			<div class="header__inner">
 				<h1 class="header__title">IP Address Tracker</h1>
 
-				<form class="header__form">
+				<form class="header__form" id="search-form">
 					<input
 						class="header__search"
 						type="text"
-						name=""
-						id=""
+						name="search"
 						placeholder="Search for any IP address or domain"
 					/>
 					<button class="header__submit" type="submit"></button>
 				</form>
 			</div>
-		</header>
+        </header>
+        
+        <main class="main">
+            <article class="ip-info">
+                <div class="ip-info__ip">
+                    <p>ip adress</p>
+                    <h2 id="ip"></h2>
+                </div>
+                <div class="ip-info__location">
+                    <p>location</p>
+                    <h2 id="location"></h2>
+                </div>
+                <div class="ip-info__timezone">
+                    <p>timezone</p>
+                    <h2 id="timezone"></h2>
+                </div>
+                <div class="ip-info__isp">
+                    <p>isp</p>
+                    <h2 id="isp"></h2>
+                </div>
+            </article>
 
-		<!-- IP Address
-	Location
-	Timezone
-	UTC 
-	ISP -->
-	</body>
+            <div class="map" id="map"></div>
+        </main>
+        
+        <script src="scripts/index.js"></script>
+	</body> 
 </html>
