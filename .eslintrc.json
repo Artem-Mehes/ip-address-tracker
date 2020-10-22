@@ -10,9 +10,11 @@
         "ecmaVersion": 12
     },
     "rules": {
-        "indent": ["error", 4],
+        "indent": ["error", "tab"],
         "semi": ["error", "always"],
         "no-console": ["error"],
-        "no-undef": ["off"]
+        "no-undef": ["off"],
+        "no-tabs": ["off"],
+        "comma-dangle": ["off"]
     }
 }

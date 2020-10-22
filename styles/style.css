@@ -69,6 +69,7 @@ body {
   display: -ms-flexbox;
   display: flex;
   width: 600px;
+  margin-bottom: 1rem;
 }
 
 .header__search {
@@ -118,6 +119,12 @@ body {
   background-repeat: no-repeat;
 }
 
+.header__error {
+  color: #fff;
+  font-size: 1.2rem;
+  text-decoration: underline;
+}
+
 .main {
   position: relative;
   display: -webkit-box;
@@ -162,7 +169,8 @@ body {
 
 .ip-info > * {
   width: 100%;
-  height: 87px;
+  min-height: 87px;
+  position: relative;
 }
 
 .ip-info > * p {
@@ -172,15 +180,38 @@ body {
 }
 
 .ip-info > :not(:last-child) {
-  padding-right: 4rem;
   margin-right: 2rem;
-  border-right: 1px solid #969696;
 }
 
-.map {
+.ip-info > :not(:last-child)::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  width: 1px;
+  height: 80px;
+  background-color: #969696;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+
+.map-wrapper {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
   z-index: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.map-wrapper__map {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
 }
 /*# sourceMappingURL=style.css.map */
