@@ -39,6 +39,8 @@ const renderMap = (lat, lng) => {
 
 	const locationIcon = L.icon({
 		iconUrl: './images/icon-location.svg',
+		iconSize: [46, 56],
+		iconAnchor: [23, 56]
 	});
 
 	L.marker([lat, lng], { icon: locationIcon }).addTo(currentMap);
@@ -55,10 +57,20 @@ const renderMap = (lat, lng) => {
 };
 
 const validateIP = (value) => {
+	if (!value) {
+		return 'Search field cannot be blank';
+	}
+
 	const arr = value.split('.');
 
 	if (arr.length < 4) {
 		return 'IP adress must have 4 octets';
+	} else if (arr.some((item) => isNaN(item))) {
+		return 'Only digit has allowed';
+	} else if (arr.some((item) => +item < 0 || +item > 255)) {
+		return 'All numbers must be between 0 and 255';
+	} else {
+		return '';
 	}
 };
 
@@ -68,18 +80,13 @@ searchForm.addEventListener('submit', (e) => {
 	const value = e.target.search.value.trim();
 	searchForm.search.focus();
 
-	if (!value) {
-		error.textContent = 'Search field cannot be blank';
-		return;
-	} else if (!validateIP(value)) {
-		error.textContent = '';
+	const errMessage = validateIP(value);
+
+	if (errMessage) {
+		error.textContent = errMessage;
+	} else {
+		getData(value);
 	}
-
-	error.textContent = validateIP(value);
-
-	getData(value);
-
-	e.target.search.value = '';
 });
 
 getData('');
