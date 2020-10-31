@@ -98,6 +98,7 @@ body {
     align-items: center;
     background-color: #fff;
     width: 63%;
+    min-width: 770px;
     display: flex;
     border-radius: 20px;
     min-height: 166px;
@@ -117,11 +118,15 @@ body {
             text-transform: uppercase;
             margin-bottom: 1rem;
             color: $light-gray;
+            font-weight: 500;
+            font-size: .9rem;
+            letter-spacing: 1px;
         }
     }
 
     >:not(:last-child) {
         margin-right: 2rem;
+        padding-right: 2rem;
 
         &::after {
             content: '';
@@ -144,5 +149,46 @@ body {
 
     &__map {
         flex: 1;
+    }
+}
+
+@media (max-width: 900px) {
+    html {
+        font-size: 14px;
+    }
+
+    .ip-info {
+        min-width: 614px;
+    }
+}
+
+@media (max-width: 770px) {
+    .header__form {
+        width: 90%;
+    }
+
+    .ip-info {
+        flex-direction: column;
+        min-width: auto;
+        width: 90%;
+        padding: 2rem;
+        text-align: center;
+        top: -174px;
+
+        > * {
+            width: auto;
+            min-height: auto;
+        }
+
+        >:not(:last-child) {
+            margin: 0;
+            margin-bottom: .5rem;
+            padding: 0;
+
+            &::after {
+                width: 0;
+                height: 0;
+            }
+        }
     }
 }

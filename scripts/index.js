@@ -35,7 +35,7 @@ const renderMap = (lat, lng) => {
 	mapWrapper.innerHTML = "<div class='map-wrapper__map' id='map'></div>";
 	const newMap = document.querySelector('#map');
 
-	const currentMap = L.map(newMap).setView([lat, lng], 15);
+	const currentMap = L.map(newMap, { zoomControl: false }).setView([lat, lng], 15);
 
 	const locationIcon = L.icon({
 		iconUrl: './images/icon-location.svg',
