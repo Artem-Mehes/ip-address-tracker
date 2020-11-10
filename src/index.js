@@ -1,3 +1,9 @@
+import * as L from 'leaflet';
+import 'normalize.css';
+import '../node_modules/leaflet/dist/leaflet.css';
+import './style.scss';
+import locationIcon from './images/icon-location.svg';
+
 const GET_IP_URL =
 	'https://geo.ipify.org/api/v1?apiKey=at_XUcz2Pcibasv4tt2q4mohSUsPRHuy&ipAddress=';
 const MAP_TOKEN =
@@ -37,13 +43,13 @@ const renderMap = (lat, lng) => {
 
 	const currentMap = L.map(newMap, { zoomControl: false }).setView([lat, lng], 15);
 
-	const locationIcon = L.icon({
-		iconUrl: './images/icon-location.svg',
+	const icon = L.icon({
+		iconUrl: locationIcon,
 		iconSize: [46, 56],
 		iconAnchor: [23, 56]
 	});
 
-	L.marker([lat, lng], { icon: locationIcon }).addTo(currentMap);
+	L.marker([lat, lng], { icon }).addTo(currentMap);
 
 	L.tileLayer(GET_MAP_URL, {
 		attribution:
